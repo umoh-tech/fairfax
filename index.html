@@ -828,42 +828,67 @@
   .sidebar-promise strong { color: rgba(255,255,255,0.6); display: block; margin-bottom: 0.25rem; }
 
   /* ── SEO & STRATEGY SECTION ── */
-  .strategy-section { 
-    padding: var(--section-pad);
-  }
-  .strategy-flex {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .strategy-card {
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 5px;
-    padding: 1.5rem;
-  }
-  .strategy-card h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--gold);
-    letter-spacing: 0.04em;
-  }
-  .strategy-card ul { list-style: none; padding: 0; }
-  .strategy-card ul li {
-    font-size: 0.88rem;
-    color: var(--text-mid);
-    padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.04);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.4rem;
-  }
-  .strategy-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+ /* Section layout */
+.image-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Each container */
+.image-box {
+  position: relative;
+  width: 30%;
+  height: 250px;
+  overflow: hidden;
+}
+
+/* All images stacked on top of each other */
+.image-box img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slideShow 16s infinite;
+}
+
+/* Animation delays for each image inside a container */
+.image-box img:nth-child(1) { animation-delay: 0s; }
+.image-box img:nth-child(2) { animation-delay: 4s; }
+.image-box img:nth-child(3) { animation-delay: 8s; }
+.image-box img:nth-child(4) { animation-delay: 12s; }
+
+/* Stagger effect for each container */
+.image-box:nth-child(2) img {
+  animation-delay: calc(4s + var(--delay, 0s));
+}
+
+.image-box:nth-child(3) img {
+  animation-delay: calc(8s + var(--delay, 0s));
+}
+
+/* Keyframes */
+@keyframes slideShow {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  25% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+ /* Container 2 delay */
+.image-section .image-box:nth-child(2) img:nth-child(1) { animation-delay: 2s; }
+.image-section .image-box:nth-child(2) img:nth-child(2) { animation-delay: 6s; }
+.image-section .image-box:nth-child(2) img:nth-child(3) { animation-delay: 10s; }
+.image-section .image-box:nth-child(2) img:nth-child(4) { animation-delay: 14s; }
+
+/* Container 3 delay */
+.image-section .image-box:nth-child(3) img:nth-child(1) { animation-delay: 4s; }
+.image-section .image-box:nth-child(3) img:nth-child(2) { animation-delay: 8s; }
+.image-section .image-box:nth-child(3) img:nth-child(3) { animation-delay: 12s; }
+.image-section .image-box:nth-child(3) img:nth-child(4) { animation-delay: 14s; }
 
   /* ── FOOTER ── */
   footer {
@@ -1514,21 +1539,31 @@
 <!-- ════════════════════════════════════
   STEP 5 + 6 + 7: SEO, DESIGN, BOOSTERS
 ═════════════════════════════════════ -->
- <!--
-<section class="strategy-section" style="padding:4rem 0;background:#f7f5f0;">
-  <div class="container">
-    <div class="image-card-1">
-     <img src="fairfax 1.jpg">
-    </div>
-    <div class="image-card-2">
-     <img src="fairfax 2.jpg">
-    </div>
-    <div class="image-card-3">
-     <img src="fairfax3.jpg">
-    </div>
+<section class="image-section">
+  <!-- Container 1 -->
+  <div class="image-box">
+    <img src="fairfax 1.jpg" alt="">
+    <img src="fairfax 2.jpg" alt="">
+    <img src="fairfax 4.jpg" alt="">
+    <img src="fairfax3.jpg" alt="">
+  </div>
+
+  <!-- Container 2 -->
+  <div class="image-box">
+    <img src="fairfax 2.jpg" alt="">
+    <img src="fairfax 1.jpg" alt="">
+    <img src="fairfax3.jpg" alt="">
+    <img src="fairfax 4.jpg" alt="">
+  </div>
+
+  <!-- Container 3 -->
+  <div class="image-box">
+    <img src="fairfax 4.jpg" alt="">
+    <img src="fairfax 1.jpg" alt="">
+    <img src="fairfax3.jpg" alt="">
+    <img src="fairfax 2.jpg" alt="">
   </div>
 </section>
--->
 <!-- FOOTER -->
 <footer>
   <div class="container">
